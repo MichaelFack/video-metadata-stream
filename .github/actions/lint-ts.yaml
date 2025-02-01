@@ -1,0 +1,8 @@
+name: Lint TS
+description: Lint TypeScript using ESLint
+runs:
+  using: "composite"
+  steps:
+    - name: Lint TypeScript using ESLint
+      run: yarn eslint ./ts/
+      shell: bash

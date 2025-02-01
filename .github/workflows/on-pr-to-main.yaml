@@ -1,0 +1,17 @@
+name: PR to main
+
+on:
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  check-ts:
+    runs-on: composite
+    name: Check TypeScript
+    steps:
+      - uses: ./.github/actions/setup-ts.yaml
+      - uses: ./.github/actions/lint-ts.yaml
