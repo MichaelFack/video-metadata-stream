@@ -10,8 +10,11 @@ permissions:
 
 jobs:
   check-ts:
-    runs-on: composite
+    runs-on: ubuntu-latest
     name: Check TypeScript
     steps:
-      - uses: ./.github/actions/setup-ts.yaml
-      - uses: ./.github/actions/lint-ts.yaml
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/setup-ts
+      - uses: ./.github/actions/check-ts

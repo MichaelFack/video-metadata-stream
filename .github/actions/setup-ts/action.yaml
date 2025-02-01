@@ -1,0 +1,13 @@
+name: 'Setup TypeScript'
+description: 'Installs and configures TypeScript.'
+runs:
+  using: "composite"
+  steps:
+    - name: install node
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: package.json
+        cache: yarn
+    - name: yarn install
+      run: yarn install
+      shell: bash
