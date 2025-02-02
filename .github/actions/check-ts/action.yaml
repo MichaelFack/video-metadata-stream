@@ -1,0 +1,11 @@
+name: Check TS
+description: Check TypeScript using ESLint, Jest
+runs:
+  using: "composite"
+  steps:
+    - name: Lint TypeScript using ESLint
+      run: yarn eslint
+      shell: bash
+    - name: Test TypeScript using Jest
+      run: yarn test
+      shell: bash
