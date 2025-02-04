@@ -14,7 +14,8 @@
   },
   "scripts": {
     "test": "jest",
-    "eslint": "eslint"
+    "eslint": "eslint",
+    "video-metadata": "tsc --project tsconfig.json && node dist/video-metadata-stream/src/main.js"
   },
   "overrides": {
     "files": [
