@@ -1,15 +1,15 @@
 import { IQueue } from "../interfaces/framework/queue";
-import { MutexLock } from "./mutex-lock";
+import { Mutex } from "../misc/mutex";
 
 export class Queue<T> implements IQueue<T> {
   private items: T[];
   private callbacks: ((o: T) => void)[];
-  private lock: MutexLock;
+  private lock: Mutex;
 
   constructor() {
     this.items = [];
     this.callbacks = [];
-    this.lock = new MutexLock();
+    this.lock = new Mutex();
   }
 
   async enqueueAsync(item: T): Promise<void> {

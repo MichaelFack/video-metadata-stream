@@ -3,7 +3,7 @@ import { IFileStream } from "../interfaces/framework/filestream";
 import { createInterface } from "readline";
 
 export class FileStream implements IFileStream {
-  filepath: string;
+  private filepath: string;
   constructor(filepath: string) {
     this.filepath = filepath;
   }

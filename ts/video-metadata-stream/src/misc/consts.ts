@@ -6,9 +6,9 @@ import { LogLevel } from "./logger"
 // Snippet:
 // Video metadata objects from the ingest file stream should be delivered for encoding...
 // ... at a maximum rate of 2 objects per second.
-export const ingestRatePrSecond = 2 // Rate of "raw" video metadata to be ingested.
+export const ingestRatePrSecond = 2; // Rate of "raw" video metadata to be ingested.
 // Snippet:
 // A maximum of 10 encoders are available.
-export const maxEncoderAmount = 10 // Maximum amount of encoders running in parralel.
+export const maxEncoderAmount = 10; // Maximum amount of encoders running in parralel.
 
-export const logLevel = LogLevel.DEBUG
+export const logLevel = LogLevel.INFO;

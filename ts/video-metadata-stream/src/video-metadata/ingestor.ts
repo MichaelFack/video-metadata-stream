@@ -1,6 +1,4 @@
-import { ReadStream } from "fs";
-import { createInterface } from "readline"
-import { IIngestor as IIngestor } from "../interfaces/ingestor";
+import { IIngestor as IIngestor } from "../interfaces/video-metadata/ingestor";
 import { IQueue } from "../interfaces/framework/queue";
 import { VideoMetadata } from "../dtos/video-metadata";
 import { MsPrSecond, TimeInMS } from "../misc/time";
@@ -49,7 +47,7 @@ export class Ingestor implements IIngestor {
       });
 
       let delayPromise = new Promise(async (resolve) => {
-        setTimeout(resolve, this.msPrIngestion)
+        setTimeout(resolve, this.msPrIngestion) // TODO: Replace this sleep-wait with thread simulating busy-wait
       });
 
       await Promise.all([ingestPromise, delayPromise])

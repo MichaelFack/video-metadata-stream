@@ -2,32 +2,36 @@ import { IQueue } from "../interfaces/framework/queue";
 import { IWorker } from "../interfaces/framework/worker";
 import { IWorkerPool } from "../interfaces/framework/worker-pool";
 import { Runner } from "./runner";
-import { MutexLock } from "./mutex-lock";
+import { Mutex } from "../misc/mutex";
+import { ILogger } from "../misc/logger";
 
 
 export class WorkerPool<TIn> extends Runner implements IWorkerPool {
   private amountOfWorkersMax: number;
   private idleWorkers: IWorker<TIn>[];
-  private idleWorkersMutex: MutexLock;
+  private idleWorkersMutex: Mutex;
   private inQueue: IQueue<TIn>;
   private getItemPromise: Promise<TIn> | undefined;
   private workerCallback: () => IWorker<TIn>;
   private workers: IWorker<TIn>[];
-  private workersMutex: MutexLock;
+  private workersMutex: Mutex;
+  private logger: ILogger;
 
   constructor(
     amountOfWorkersMax: number,
     inQueue: IQueue<TIn>,
-    workerCallback: () => IWorker<TIn> 
+    workerCallback: () => IWorker<TIn>,
+    logger: ILogger,
+    mu
   ) {
     super();
     this.amountOfWorkersMax = amountOfWorkersMax;
     this.idleWorkers = [];
-    this.idleWorkersMutex = new MutexLock();
+    this.idleWorkersMutex = new Mutex(mutexLogger);
     this.inQueue = inQueue;
     this.workerCallback = workerCallback;
     this.workers = [];
-    this.workersMutex = new MutexLock();
+    this.workersMutex = new Mutex();
   }
 
   protected async runOnceAsync(): Promise<void> {

@@ -1,5 +1,4 @@
-import { createReadStream, ReadStream } from "fs";
-import { IProvider } from "../interfaces/provider";
+import { IProvider } from "../interfaces/video-metadata/provider";
 import path from "path";
 import { IFileStream } from "../interfaces/framework/filestream";
 import { FileStream } from "../framework/filestream";

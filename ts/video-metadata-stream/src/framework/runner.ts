@@ -1,8 +1,8 @@
 import { IRunner } from "../interfaces/framework/runner";
-import { MutexLock } from "./mutex-lock";
+import { Mutex } from "../misc/mutex";
 
 export abstract class Runner implements IRunner {
-  private isRunningMutex: MutexLock;
+  private isRunningMutex: Mutex;
   private _isRunning: boolean;
 
   protected get isRunning(): Promise<boolean> {

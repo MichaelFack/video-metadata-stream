@@ -3,7 +3,7 @@ import { VideoMetadata } from "./dtos/video-metadata";
 import { Queue } from "./framework/queue";
 import { Ingestor } from "./video-metadata/ingestor";
 import * as consts from "./misc/consts";
-import { EncoderWorker } from "./video-metadata/encoder-worker";
+import { Worker } from "./video-metadata/worker";
 import { Encoder } from "./video-metadata/encoder";
 import { Publisher } from "./video-metadata/publisher";
 import { Provider } from "./video-metadata/provider";
@@ -26,7 +26,7 @@ const ingestor = new Ingestor(consts.ingestRatePrSecond, metadataQueue)
 const workerPool = new WorkerPool(
   consts.maxEncoderAmount,
   metadataQueue,
-  () => new EncoderWorker(
+  () => new Worker(
     new Encoder(), 
     () => new Publisher()
   )
